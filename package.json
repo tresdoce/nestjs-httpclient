@@ -1,6 +1,6 @@
 {
   "name": "@tresdoce/nestjs-httpclient",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NestJS httpClient module",
   "author": {
     "name": "Maximiliano \"Mex\" Delgado",
