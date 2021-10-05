@@ -49,12 +49,12 @@ jobs:
           NODE_ENV: 'test'
       - name: "🎉 Publish NPM PKG: ${{github.event.inputs.newVersion}}"
         run: |
-          git config --global user.name "GitHub CD bot"
-          git config --global user.email "you-email@example.com"
+          git config --global user.name "GitHub bot"
+          git config --global user.email "mdelgado@tresdoce.com.ar"
           npm version ${{github.event.inputs.newVersion}}
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          npm publish
+          npm publish --access public
           cd ..
           git push
       - name: "🏷️ Create Release: ${{github.event.inputs.newVersion}}"

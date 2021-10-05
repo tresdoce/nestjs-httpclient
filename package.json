@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-package-starter",
-  "version": "1.0.4",
-  "description": "NestJS npm package starter",
+  "name": "@tresdoce/nestjs-httpclient",
+  "version": "0.0.1",
+  "description": "NestJS httpClient module",
   "author": {
     "name": "Maximiliano \"Mex\" Delgado",
     "email": "mdelgado@tresdoce.com.ar",
@@ -13,18 +13,18 @@
   },
   "keywords": [
     "nestjs",
-    "package",
-    "starter"
+    "http",
+    "axios"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rudemex/nestjs-package-starter.git"
+    "url": "git+https://github.com/tresdoce/nestjs-httpclient.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rudemex/nestjs-package-starter/issues"
+    "url": "https://github.com/tresdoce/nestjs-httpclient/issues"
   },
-  "homepage": "https://github.com/rudemex/nestjs-package-starter#readme",
+  "homepage": "https://github.com/tresdoce/nestjs-httpclient#readme",
   "scripts": {
     "clean": "shx rm -rf pkg",
     "prebuild": "npm run clean",
