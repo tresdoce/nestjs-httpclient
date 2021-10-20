@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { GreetingModule } from '../greeting/greeting.module';
+import { HttpModule } from '../http/http.module';
 
 describe('GreetingModule', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [GreetingModule],
+      imports: [HttpModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -17,4 +17,5 @@ describe('GreetingModule', () => {
   it('should be defined', () => {
     expect(app).toBeDefined();
   });
+
 });

@@ -23,13 +23,12 @@
     "esModuleInterop": true,
     "strict": false
   },
-  "include": [".eslintrc.js", "src/**/*"],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "dist",
     "test",
     "__test__",
-    "**/__test__",
     "**/__test__/**/*",
     "**/*spec.ts",
     "**/*it.ts",

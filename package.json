@@ -43,6 +43,8 @@
     "rxjs": "^7.3.0"
   },
   "dependencies": {
+    "axios": "^0.22.0",
+    "axios-retry": "^3.2.0",
     "shx": "^0.3.3"
   },
   "devDependencies": {
@@ -113,7 +115,7 @@
   "@pika/pack": {
     "pipeline": [
       [
-        "@pika/plugin-standard-pkg",
+        "@pika/plugin-ts-standard-pkg",
         {
           "exclude": [
             "**/__test__/*"
