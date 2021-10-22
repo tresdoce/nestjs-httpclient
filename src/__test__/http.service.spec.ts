@@ -24,9 +24,16 @@ describe('HttpService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should be return status 200', async (done) =>{
-    const { status } = await service.get('https://www.google.com')
+  it('should be return status 200 - get', async (done) =>{
+    const { status } = await service.get('https://jsonplaceholder.typicode.com/users')
     expect(status).toBe(200);
     done();
   })
+
+  it('should be return status 201 - post', async (done) =>{
+    const { status } = await service.post('https://jsonplaceholder.typicode.com/users')
+    expect(status).toBe(201);
+    done();
+  })
+
 });
