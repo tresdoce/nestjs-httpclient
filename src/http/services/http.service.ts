@@ -4,18 +4,35 @@ import { AXIOS_INSTANCE_TOKEN } from '../constants/http.constants';
 
 @Injectable()
 export class HttpService {
+  private ip: string;
+  private headers: any;
+
   constructor(
     @Inject(AXIOS_INSTANCE_TOKEN) private readonly instance: AxiosInstance = Axios,
-  ) {}
+  ) {
+
+    this.axiosRef.interceptors.request.use( (config: AxiosRequestConfig) => {
+      return config;
+    });
+
+    this.axiosRef.interceptors.response.use(
+      (response) => {
+        return response
+      },
+      (error) => {
+        return error;
+      },
+    );
+
+  }
 
   get axiosRef(): AxiosInstance {
     return this.instance;
   }
 
-  public initAxios(): void {
-    this.axiosRef.interceptors.request.use( (config: AxiosRequestConfig) => {
-      return config;
-    })
+  public initAxios(headers: any, ip: any): void {
+    this.ip = ip;
+    this.headers = headers;
   }
 
   // Methods

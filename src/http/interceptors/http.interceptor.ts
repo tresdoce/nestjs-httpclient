@@ -17,9 +17,7 @@ export class HttpInterceptor<T> implements NestInterceptor<T, any>{
     this.request = ctx.getRequest<Request>();
     this.response = ctx.getResponse<Response>();
 
-    console.log("REQUEST INTERCEPT: ", this.request.headers);
-
-    this.httpService.initAxios();
+    this.httpService.initAxios(this.request.headers, this.request.ip);
 
     return next.handle();
   }
