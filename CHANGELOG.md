@@ -16,7 +16,3 @@
 ### 📝 Docs
 
 * **readme:** add documentation of module ([d19e43c](https://github.com/tresdoce/nestjs-httpclient/commit/d19e43c34b26531ae4cab3bd77af315837988ba7))
-
-<div align="center"><h1>📝 Changelog</h1><p>All changes of this package will be documented in this file.</p></div>
-
----
