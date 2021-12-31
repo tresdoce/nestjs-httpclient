@@ -2,14 +2,14 @@ import { CallHandler, ExecutionContext, Injectable, NestInterceptor, Scope } fro
 import { Observable } from 'rxjs';
 import { Request, Response } from 'express';
 
-import { HttpService } from '../services/http.service';
+import { HttpClientService } from '../services/httpClient.service';
 
 @Injectable({ scope: Scope.REQUEST })
-export class HttpInterceptor<T> implements NestInterceptor<T, any>{
+export class HttpClientInterceptor<T> implements NestInterceptor<T, any>{
   private request: Request;
   private response: Response;
 
-  constructor(private readonly httpService: HttpService) {
+  constructor(private readonly httpService: HttpClientService) {
   }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> | Promise<Observable<any>> {

@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { HttpService } from '../http/services/http.service';
-import { HttpInterceptor } from '../http/interceptors/http.interceptor';
-import { HttpModule } from '../http/http.module';
+import { HttpClientService } from '../http/services/httpClient.service';
+import { HttpClientInterceptor } from '../http/interceptors/httpClient.interceptor';
+import { HttpClientModule } from '../http/httpClient.module';
 import { config } from './utils';
 
 const executionContext: any = {
@@ -19,8 +19,8 @@ const callHandler: any = {
 
 describe('HttpInterceptor', () => {
   let app: INestApplication;
-  let service: HttpService;
-  let interceptor: HttpInterceptor<any>;
+  let service: HttpClientService;
+  let interceptor: HttpClientInterceptor<any>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -29,14 +29,14 @@ describe('HttpInterceptor', () => {
           isGlobal: true,
           load: [config]
         }),
-        HttpModule
+        HttpClientModule
       ]
     }).compile();
     app = module.createNestApplication();
     await app.init;
 
-    service = module.get<HttpService>(HttpService);
-    interceptor = new HttpInterceptor(service);
+    service = module.get<HttpClientService>(HttpClientService);
+    interceptor = new HttpClientInterceptor(service);
   });
 
   it('should be defined', () => {

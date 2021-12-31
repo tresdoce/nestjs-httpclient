@@ -3,7 +3,7 @@ import Axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { AXIOS_INSTANCE_TOKEN } from '../constants/http.constants';
 
 @Injectable()
-export class HttpService {
+export class HttpClientService {
   private ip: string;
   private headers: any;
 

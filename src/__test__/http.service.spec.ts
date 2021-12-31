@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { HttpService } from '../http/services/http.service';
+import { HttpClientService } from '../http/services/httpClient.service';
 
 import { INestApplication } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from './utils';
-import { HttpModule } from '../http/http.module';
+import { HttpClientModule } from '../http/httpClient.module';
 
 const API_NESTJS_STARTER = 'https://jsonplaceholder.typicode.com';
 
@@ -17,7 +17,7 @@ const mockRequestBody = {
 
 describe('HttpService', () => {
   let app: INestApplication;
-  let service: HttpService;
+  let service: HttpClientService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -26,7 +26,7 @@ describe('HttpService', () => {
           isGlobal: true,
           load: [config],
         }),
-        HttpModule.registerAsync({
+        HttpClientModule.registerAsync({
           imports: [ConfigModule],
           useFactory: async (configService: ConfigService) => configService.get('config.httpOptions'),
           inject: [ConfigService],
@@ -35,7 +35,7 @@ describe('HttpService', () => {
     }).compile();
     app = module.createNestApplication();
     await app.init;
-    service = module.get<HttpService>(HttpService);
+    service = module.get<HttpClientService>(HttpClientService);
   });
 
   afterEach(async (done) => {
@@ -45,7 +45,7 @@ describe('HttpService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-    expect(service).toBeInstanceOf(HttpService);
+    expect(service).toBeInstanceOf(HttpClientService);
     expect(service.axiosRef).not.toBeNull();
   });
 

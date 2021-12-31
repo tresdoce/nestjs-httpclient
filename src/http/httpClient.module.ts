@@ -2,13 +2,14 @@ import { DynamicModule, Module, Provider, Global } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import Axios from 'axios';
 import axiosRetry from 'axios-retry';
+import * as _ from 'lodash';
 import {
   AXIOS_INSTANCE_TOKEN,
   HTTP_MODULE_ID,
   HTTP_MODULE_OPTIONS,
-  headers, httpsAgent
+  defaultConfigInstanceAxios,
 } from './constants/http.constants';
-import { HttpService } from './services/http.service';
+import { HttpClientService } from './services/httpClient.service';
 import {
   HttpModuleAsyncOptions,
   HttpModuleOptions,
@@ -17,10 +18,9 @@ import {
 
 const createAxiosRetry = (config: HttpModuleOptions) => {
   const axiosInstanceConfig: HttpModuleOptions = {
-    headers,
-    httpsAgent,
-    ...config
-  }
+    ..._.merge(defaultConfigInstanceAxios, config)
+  };
+
   const axiosInstance = Axios.create(axiosInstanceConfig);
   axiosRetry(axiosInstance, axiosInstanceConfig);
   return axiosInstance;
@@ -29,19 +29,19 @@ const createAxiosRetry = (config: HttpModuleOptions) => {
 @Global()
 @Module({
   providers: [
-    HttpService,
+    HttpClientService,
     {
       provide: AXIOS_INSTANCE_TOKEN,
       useValue: Axios,
     },
   ],
-  exports: [HttpService],
+  exports: [HttpClientService],
 })
 
-export class HttpModule {
+export class HttpClientModule {
   static register(config: HttpModuleOptions): DynamicModule {
     return {
-      module: HttpModule,
+      module: HttpClientModule,
       providers: [
         {
           provide: AXIOS_INSTANCE_TOKEN,
@@ -57,7 +57,7 @@ export class HttpModule {
 
   static registerAsync(options: HttpModuleAsyncOptions): DynamicModule {
     return {
-      module: HttpModule,
+      module: HttpClientModule,
       imports: options.imports,
       providers: [
         ...this.createAsyncProviders(options),

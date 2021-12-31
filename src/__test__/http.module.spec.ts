@@ -2,8 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { HttpModule } from '../http/http.module';
+import { HttpClientModule } from '../http/httpClient.module';
 import { config } from './utils';
+import { HttpModuleAsyncOptions } from '../http/interfaces/http-module.interface';
 
 class MockedClass {
   createHttpOptions() {
@@ -12,6 +13,13 @@ class MockedClass {
       maxRedirects: 5,
     };
   }
+}
+
+const mockedUseFactory: HttpModuleAsyncOptions = {
+  useFactory: async() => ({
+    timeout: 5000,
+    maxRedirects: 5,
+  })
 }
 
 describe('HttpModule - registerAsync useFactory', () => {
@@ -23,12 +31,7 @@ describe('HttpModule - registerAsync useFactory', () => {
           isGlobal: true,
           load: [config],
         }),
-        HttpModule.registerAsync({
-          useFactory: async () => ({
-            timeout: 5000,
-            maxRedirects: 5,
-          }),
-        }),
+        HttpClientModule.registerAsync(mockedUseFactory),
       ],
     }).compile();
     app = module.createNestApplication();
@@ -46,6 +49,9 @@ describe('HttpModule - registerAsync useFactory', () => {
   });
 });
 
+const mockedUseClassOptions: HttpModuleAsyncOptions = {
+  useClass: MockedClass
+}
 
 describe('HttpModule - registerAsync useClass', () => {
   let app: INestApplication;
@@ -56,9 +62,7 @@ describe('HttpModule - registerAsync useClass', () => {
           isGlobal: true,
           load: [config],
         }),
-        HttpModule.registerAsync({
-          useClass: MockedClass
-        }),
+        HttpClientModule.registerAsync(mockedUseClassOptions),
       ],
     }).compile();
     app = module.createNestApplication();
@@ -76,6 +80,11 @@ describe('HttpModule - registerAsync useClass', () => {
   });
 });
 
+const mockedUseExistingOptions: HttpModuleAsyncOptions = {
+  extraProviders: [MockedClass],
+  useExisting: MockedClass
+}
+
 describe('HttpModule - registerAsync useExisting', () => {
   let app: INestApplication;
   beforeEach(async () => {
@@ -85,10 +94,7 @@ describe('HttpModule - registerAsync useExisting', () => {
           isGlobal: true,
           load: [config],
         }),
-        HttpModule.registerAsync({
-          extraProviders: [MockedClass],
-          useExisting: MockedClass,
-        }),
+        HttpClientModule.registerAsync(mockedUseExistingOptions),
       ],
     }).compile();
     app = module.createNestApplication();
@@ -116,7 +122,7 @@ describe('HttpModule - register', () => {
           isGlobal: true,
           load: [config],
         }),
-        HttpModule.register({ ...config().httOptions }),
+        HttpClientModule.register({ ...config().httOptions }),
       ],
     }).compile();
     app = module.createNestApplication();

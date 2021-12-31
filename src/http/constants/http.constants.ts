@@ -1,4 +1,5 @@
 import https from 'https';
+import { HttpModuleOptions } from '../interfaces/http-module.interface';
 
 export const AXIOS_INSTANCE_TOKEN = 'AXIOS_INSTANCE_TOKEN';
 export const HTTP_MODULE_ID = 'HTTP_MODULE_ID';
@@ -16,3 +17,8 @@ export const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
   requestCert: false,
 });
+
+export const defaultConfigInstanceAxios: HttpModuleOptions = {
+  headers,
+  httpsAgent
+}
