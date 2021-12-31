@@ -1,23 +1,28 @@
 import { DynamicModule, Module, Provider, Global } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import Axios from 'axios';
+import axiosRetry from 'axios-retry';
 import {
   AXIOS_INSTANCE_TOKEN,
   HTTP_MODULE_ID,
   HTTP_MODULE_OPTIONS,
 } from './constants/http.constants';
 import { HttpService } from './services/http.service';
+import { headers, httpsAgent } from './constants/http.constants';
 import {
   HttpModuleAsyncOptions,
   HttpModuleOptions,
   HttpModuleOptionsFactory,
 } from './interfaces/http-module.interface';
 
-import axiosRetry from 'axios-retry';
-
 const createAxiosRetry = (config: HttpModuleOptions) => {
-  const axiosInstance = Axios.create(config);
-  axiosRetry(axiosInstance, config);
+  const axiosInstanceConfig: HttpModuleOptions = {
+    headers,
+    httpsAgent,
+    ...config
+  }
+  const axiosInstance = Axios.create(axiosInstanceConfig);
+  axiosRetry(axiosInstance, axiosInstanceConfig);
   return axiosInstance;
 }
 

@@ -10,20 +10,9 @@ export class HttpService {
   constructor(
     @Inject(AXIOS_INSTANCE_TOKEN) private readonly instance: AxiosInstance = Axios,
   ) {
-
-    this.axiosRef.interceptors.request.use( (config: AxiosRequestConfig) => {
-      return config;
-    });
-
+    this.axiosRef.interceptors.request.use( (config: AxiosRequestConfig) => config);
     this.axiosRef.interceptors.response.use(
-      (response) => {
-        return response
-      },
-      (error) => {
-        return error;
-      },
-    );
-
+      (response) => response, (error) => error);
   }
 
   get axiosRef(): AxiosInstance {
@@ -37,31 +26,36 @@ export class HttpService {
 
   // Methods
 
-  request<T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public request<T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    // const timeRequest = Date.now();
     return this.axiosRef.request(config);
+    /*return this.axiosRef.request(config).pipe(
+        tap((response: AxiosResponse) => this.logExternalHttp(response, timeRequest)),
+        catchError((error: Promise<AxiosResponse<T>>) => error)
+    );*/
   }
 
-  get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.get(url, config);
   }
 
-  delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.delete(url, config);
   }
 
-  head<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public head<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.head(url, config);
   }
 
-  post<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public post<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.post(url, data, config);
   }
 
-  put<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public put<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.put(url, data, config);
   }
 
-  patch<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public patch<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosRef.patch(url, data, config);
   }
 }
