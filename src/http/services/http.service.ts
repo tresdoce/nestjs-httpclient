@@ -27,12 +27,7 @@ export class HttpService {
   // Methods
 
   public request<T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-    // const timeRequest = Date.now();
     return this.axiosRef.request(config);
-    /*return this.axiosRef.request(config).pipe(
-        tap((response: AxiosResponse) => this.logExternalHttp(response, timeRequest)),
-        catchError((error: Promise<AxiosResponse<T>>) => error)
-    );*/
   }
 
   public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
