@@ -6,9 +6,9 @@ import {
   AXIOS_INSTANCE_TOKEN,
   HTTP_MODULE_ID,
   HTTP_MODULE_OPTIONS,
+  headers, httpsAgent
 } from './constants/http.constants';
 import { HttpService } from './services/http.service';
-import { headers, httpsAgent } from './constants/http.constants';
 import {
   HttpModuleAsyncOptions,
   HttpModuleOptions,
