@@ -1,6 +1,14 @@
-<div align="center"><h1>📝 Changelog</h1><p>All changes of this package will be documented in this file.</p></div>
+<div align="center"><h1>📝 Changelog</h1><p>All changes of this project will be documented in this file.</p></div>
 
 ---
+
+### [0.0.5](https://github.com/tresdoce/nestjs-httpclient/compare/v0.0.4...v0.0.5) (2022-01-17)
+
+
+### 👨‍💻 Chores
+
+* **changelog:** edit changelog ([8eaee1d](https://github.com/tresdoce/nestjs-httpclient/commit/8eaee1df8d7f6f13c6ab5255fadde95ce74238e9))
+* update dependencies ([46627c3](https://github.com/tresdoce/nestjs-httpclient/commit/46627c322e21a90de94fed14775abab0af257ba9))
 
 ### [0.0.4](https://github.com/tresdoce/nestjs-httpclient/compare/v0.0.3...v0.0.4) (2021-12-31)
 
