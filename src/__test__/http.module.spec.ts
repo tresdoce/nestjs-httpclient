@@ -38,14 +38,12 @@ describe('HttpModule - registerAsync useFactory', () => {
     await app.init;
   });
 
-  afterEach(async (done) => {
+  afterEach(async () => {
     await app.close();
-    done();
   });
 
-  it('should be define', async (done) => {
+  it('should be define', async () => {
     expect(app).toBeDefined();
-    done();
   });
 });
 
@@ -69,14 +67,12 @@ describe('HttpModule - registerAsync useClass', () => {
     await app.init;
   });
 
-  afterEach(async (done) => {
+  afterEach(async () => {
     await app.close();
-    done();
   });
 
-  it('should be define', async (done) => {
+  it('should be define', async () => {
     expect(app).toBeDefined();
-    done();
   });
 });
 
@@ -101,14 +97,12 @@ describe('HttpModule - registerAsync useExisting', () => {
     await app.init;
   });
 
-  afterEach(async (done) => {
+  afterEach(async () => {
     await app.close();
-    done();
   });
 
-  it('should be define', async (done) => {
+  it('should be define', async () => {
     expect(app).toBeDefined();
-    done();
   });
 });
 
@@ -129,13 +123,11 @@ describe('HttpModule - register', () => {
     await app.init;
   });
 
-  afterEach(async (done) => {
+  afterEach(async () => {
     await app.close();
-    done();
   });
 
-  it('should be define', async (done) => {
+  it('should be define', async () => {
     expect(app).toBeDefined();
-    done();
   });
 });

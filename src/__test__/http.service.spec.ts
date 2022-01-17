@@ -38,9 +38,8 @@ describe('HttpService', () => {
     service = module.get<HttpClientService>(HttpClientService);
   });
 
-  afterEach(async (done) => {
+  afterEach(async () => {
     await app.close();
-    done();
   });
 
   it('should be defined', () => {
@@ -49,72 +48,64 @@ describe('HttpService', () => {
     expect(service.axiosRef).not.toBeNull();
   });
 
-  it('should be return status 200 - request', async (done) => {
+  it('should be return status 200 - request', async () => {
     const { status, data } = await service.request({
       url: `${API_NESTJS_STARTER}/posts`,
       method: 'GET',
     });
     expect(status).toBe(200);
     expect(data.length).toBeGreaterThan(0);
-    done();
   });
 
-  it('should be return status 200 - get', async (done) => {
+  it('should be return status 200 - get', async () => {
     const { status, data } = await service.get(`${API_NESTJS_STARTER}/posts`);
     expect(status).toBe(200);
     expect(data.length).toBeGreaterThan(0);
-    done();
   });
 
-  it('should be return status 201 - post', async (done) => {
+  it('should be return status 201 - post', async () => {
     const { status, data } = await service.post(`${API_NESTJS_STARTER}/posts`, mockRequestBody);
     expect(status).toBe(201);
     expect(data).toEqual({
       ...mockRequestBody,
       'id': 101,
     });
-    done();
   });
 
-  it('should be return status 200 - get by id', async (done) => {
+  it('should be return status 200 - get by id', async () => {
     const { status, data } = await service.get(`${API_NESTJS_STARTER}/posts/1`);
     expect(status).toBe(200);
     expect(data).toEqual(mockRequestBody);
-    done();
   });
 
-  it('should be return status 200 - put', async (done) => {
+  it('should be return status 200 - put', async () => {
     const { status, data } = await service.put(`${API_NESTJS_STARTER}/posts/1`, {
       ...mockRequestBody,
       'title': 'mockito',
     });
     expect(status).toBe(200);
     expect(data).toEqual({ ...mockRequestBody, id: 1, 'title': 'mockito' });
-    done();
   });
 
-  it('should be return status 200 - delete', async (done) => {
+  it('should be return status 200 - delete', async () => {
     const { status, data } = await service.delete(`${API_NESTJS_STARTER}/posts/2`);
     expect(status).toBe(200);
     expect(data).toEqual({});
-    done();
   });
 
-  it('should be return status 200 - patch', async (done) => {
+  it('should be return status 200 - patch', async () => {
     const { status, data } = await service.patch(`${API_NESTJS_STARTER}/posts/1`, {
       ...mockRequestBody,
       'title': 'mockito',
     });
     expect(status).toBe(200);
     expect(data).toEqual({ ...mockRequestBody, id: 1, 'title': 'mockito' });
-    done();
   });
 
-  it('should be return status 200 - head', async (done) => {
+  it('should be return status 200 - head', async () => {
     const { status, headers } = await service.head(`${API_NESTJS_STARTER}/posts`);
     expect(status).toBe(200);
     expect(headers).toHaveProperty('etag');
-    done();
   });
 
 });
