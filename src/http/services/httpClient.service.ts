@@ -41,8 +41,7 @@ export class HttpClientService {
         ...config,
       });
     } catch (error) {
-      console.error(error);
-      throw error;
+      return error;
     }
   }
 
