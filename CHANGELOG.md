@@ -2,6 +2,25 @@
 
 ---
 
+## [0.1.0](https://github.com/tresdoce/nestjs-httpclient/compare/v0.0.5...v0.1.0) (2022-01-22)
+
+
+### 👨‍💻 Chores
+
+* **dependencies:** update dependencies ([f0fa1da](https://github.com/tresdoce/nestjs-httpclient/commit/f0fa1da79c969ac1cfbd1cb5116aa0f495b0a7aa))
+* **template:** update issue template ([1042835](https://github.com/tresdoce/nestjs-httpclient/commit/104283582310a9f722b7f5402ede151a8743139b))
+
+
+### ♻️Refactors
+
+* **service:** refactor all http service ([d10b0db](https://github.com/tresdoce/nestjs-httpclient/commit/d10b0dbdf0a25a17e3506f86e36ed86fc3e868ba))
+
+
+### 🐛 Bug Fixes
+
+* resolve vatch service ([bc01d29](https://github.com/tresdoce/nestjs-httpclient/commit/bc01d29976ca9d8550c92635c03c65db2d009b4a))
+* resolve vatch service ([ec46119](https://github.com/tresdoce/nestjs-httpclient/commit/ec46119ad23d61769bb843e0a4e9c8f9b9f62fe2))
+
 ### [0.0.5](https://github.com/tresdoce/nestjs-httpclient/compare/v0.0.4...v0.0.5) (2022-01-17)
 
 
