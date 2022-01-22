@@ -64,7 +64,7 @@ describe('HttpService', () => {
   });
 
   it('should be return status 201 - post', async () => {
-    const { status, data } = await service.post(`${API_NESTJS_STARTER}/posts`, mockRequestBody);
+    const { status, data } = await service.post(`${API_NESTJS_STARTER}/posts`, { data: mockRequestBody });
     expect(status).toBe(201);
     expect(data).toEqual({
       ...mockRequestBody,
@@ -80,8 +80,10 @@ describe('HttpService', () => {
 
   it('should be return status 200 - put', async () => {
     const { status, data } = await service.put(`${API_NESTJS_STARTER}/posts/1`, {
-      ...mockRequestBody,
-      'title': 'mockito',
+      data: {
+        ...mockRequestBody,
+        'title': 'mockito',
+      },
     });
     expect(status).toBe(200);
     expect(data).toEqual({ ...mockRequestBody, id: 1, 'title': 'mockito' });
@@ -95,8 +97,10 @@ describe('HttpService', () => {
 
   it('should be return status 200 - patch', async () => {
     const { status, data } = await service.patch(`${API_NESTJS_STARTER}/posts/1`, {
-      ...mockRequestBody,
-      'title': 'mockito',
+      data: {
+        ...mockRequestBody,
+        'title': 'mockito',
+      }
     });
     expect(status).toBe(200);
     expect(data).toEqual({ ...mockRequestBody, id: 1, 'title': 'mockito' });
@@ -107,5 +111,10 @@ describe('HttpService', () => {
     expect(status).toBe(200);
     expect(headers).toHaveProperty('etag');
   });
+
+  it('should be return error', async () => {
+    const result = await service.get(`${API_NESTJS_STARTER}/postss`);
+    expect(result.status).not.toBe(200)
+  })
 
 });
