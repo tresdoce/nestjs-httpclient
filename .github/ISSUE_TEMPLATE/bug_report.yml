@@ -45,11 +45,11 @@ body:
       required: true
 
   - type: input
-    id: version
+    id: versions
     attributes:
       label: Which version of the app are you using?
       description: If this problem occurs in more than one version of the application, write them separated with a comma.
-      placeholder: v0.0.1, v0.0.2
+      placeholder: v1.0.0,v1.1.0
     validations:
       required: true
 
