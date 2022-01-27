@@ -8,7 +8,7 @@ export const HTTP_MODULE_OPTIONS = 'HTTP_MODULE_OPTIONS';
 export const headers = {
   'Content-Type': 'application/json',
   Accept: `application/vnd.iman.v1+json, application/json, text/plain, */*`,
-  //'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': '*',
   'Cache-Control': 'no-store, no-cache, must-revalidate',
   Pragma: 'no-cache',
 };
@@ -20,8 +20,8 @@ export const httpsAgent = new https.Agent({
 
 export const defaultConfigInstanceAxios: HttpModuleOptions = {
   headers,
-  httpsAgent
-}
+  httpsAgent,
+};
 
 export enum RequestMethod {
   GET = 'GET',
