@@ -2,6 +2,18 @@
 
 ---
 
+### [0.1.1](https://github.com/tresdoce/nestjs-httpclient/compare/v0.1.0...v0.1.1) (2022-01-27)
+
+
+### 📝 Docs
+
+* **readme:** edit version of nestjs in badge ([aeca508](https://github.com/tresdoce/nestjs-httpclient/commit/aeca5084c295af0170ea9151154018f8099b28aa))
+
+
+### ♻️Refactors
+
+* **service:** refactor methods in service ([2a8676a](https://github.com/tresdoce/nestjs-httpclient/commit/2a8676a162925dd2d9eca629400e69de3ba9c356))
+
 ## [0.1.0](https://github.com/tresdoce/nestjs-httpclient/compare/v0.0.5...v0.1.0) (2022-01-22)
 
 
