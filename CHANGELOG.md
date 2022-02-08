@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.2](https://github.com/tresdoce/nestjs-httpclient/compare/v0.1.1...v0.1.2) (2022-02-08)
+
+
+### 🐛 Bug Fixes
+
+* **constants:** remove access control allow origin ([1c232fa](https://github.com/tresdoce/nestjs-httpclient/commit/1c232faec0bf4557eed6c82c608fd8bee14bf77d))
+
 ### [0.1.1](https://github.com/tresdoce/nestjs-httpclient/compare/v0.1.0...v0.1.1) (2022-01-27)
 
 
